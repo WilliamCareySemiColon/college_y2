@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>My Erwin Key Decisions</title>
+	</head>
+	
+	<body>
+		<section>
+			<h1>My erwin entities
+			</h1>
+			
+			<ol>
+			<li>Stock</li>
+			<li>Type of item</li>
+			<li>Game</li>
+			<li>skills</li>
+			<li>consoles</li>
+			<li>Accessories</li>
+			<li>Pecentage Markup</li>
+			<li>Suppliers</li>
+			<li>Sale Representive</li>
+			<li>Supply order</li>
+			<li>Delivery</li>
+			<li>Reviewers</li>
+			<li>System</li>
+			</ol>
+			
+			<p>
+				Each item has many relantions with one other and has many attributes based upon them. The entity STOCK has a MANY TO MANY relation with the entity Suppliers and ONE TO MANY
+				relation with the entities Percentage Markup and Type of item. Between them, the Stock has an Unique Id which comes from the supplier and imposes them on the percentage 
+				markup as well as Type of item. The two attributes of Stock is the ID Code and the quantity of the stock, where the ID code is the unique key. The type of item has the 
+				primary key of cantegory which is then linked  by ONE TO MANY relation to the three types - CONSOLES, ACCESSORIES and GAMES. Each item member has their name as unique and
+				are linked together as features for one another. With Games themselves, they are limked with MANY TO MANY with REVIEWERS and MANY TO ONE with SYSTEM, as well as MANY TO MANY 
+				SKILLS. REVIEWERS are the people who review	the game and the system	is the device which allows them to review the game. The skill refers to the game design of how to run the 
+				programme. All of these have attributes themselves, such as Catgory with Type of item, Name with GAMES, CONSOLES and ACCESSORIES. The Username with Reviewers and Linking them
+				with the other entitiest to give them a unique outlook.
+			</p>
+			
+			<p>
+				SUPPLIER is linked on a MANY TO MANY basis with Sale representive and Supplier order, as well as a one to many basis on Delivery order entity. The ID for Supplier is the ID, 
+				which is unique to the company. The order id is also unique to the supplier order as well as the ID of the sale representive. All of these are highlighted in the delivery entity.
+				All of the element cannot be null.
+			</p>
+			
+			<p>
+				The primary keys are named '%_pk'. The Foreign keys are named '%_fk'. The constaints are named based upon the variable they cover eg email have the constraint name of email.
+			</p>
+			
+		</section>
+		
+		<footer>
+			<h2>Site created by C16315253,DT-228/2,William Carey &copy:2017 </h2>
+		</footer>
+	</body>
+</html>

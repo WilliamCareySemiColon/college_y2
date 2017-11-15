@@ -1,0 +1,78 @@
+model BankSys
+
+class Customer
+  attributes
+	name : String
+	wealth : Integer 
+
+  operations
+  openNewAccount(accType : String)
+	begin
+		declare acc : BankAccount;
+	
+		if accType = 'savings' then
+			acc := new SavingsAccount
+	
+		else
+			acc := new CurrentAccount
+		end;
+	
+		acc.balance := 0;
+		Write('Enter new account number: ');
+		acc.accNo := ReadLine();
+		insert (self, acc) into HasAccounts
+	end
+	
+  showWealth() : Integer 
+	begin
+	   declare wealth : Integer;
+	   wealth := 0;
+		for acc in self.accounts do
+			wealth := wealth + acc.balance
+		end;
+		self.wealth := wealth;
+	   WriteLine('Wealth is ');
+	   --Write(wealth);
+	   result := wealth
+   end 
+	 
+	 depositMoney(x:Integer, acc:BankAccount)
+	 begin
+	 acc.deposit(x)
+	 end
+	  
+	  withdrawMoney(x:Integer, acc:BankAccount)
+	  begin
+	   acc.withdraw(x)
+	  end
+end
+
+class BankAccount
+	attributes
+	 balance: Integer
+	 accNo: String
+	operations
+	 deposit(amount : Integer)
+	  begin
+	   self.balance := self.balance + amount
+	  end
+	  withdraw(amount: Integer)
+	  begin
+	   self.balance :=self.balance - amount
+	  end
+end
+
+class CurrentAccount < BankAccount
+	attributes
+	 od_limit: Integer
+end
+
+class SavingsAccount < BankAccount
+	attributes
+	 rate: Real
+end
+
+association HasAccounts between
+	Customer[1]
+	BankAccount[*] role accounts
+end

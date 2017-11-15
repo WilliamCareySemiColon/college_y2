@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Erwin Key Decisions</title>
+	</head>
+
+	<body>
+		<header>
+			<h1>My Erwin Key Decisions</h1>
+			<p>
+				The key decisions for any of the entities. This includes what 
+				is defined as a unique feature (Primary Key) to what feature from one entity 
+				is needed in another entity (Foriegn Key). As well as these features, we
+				also need error-check input to make sure the programme runs smooth. So 
+				we constain them.
+			</p>
+			<p>
+				In order to effectly work at this part of the CA, I went through the
+				assignment worksheet which had all the details of what should be in the 
+				data model. Once I broke it down, I was able to piece the model itself. 
+				To make sure I was going on track, I double check with my notes to make 
+				the model is done correctly. I plan to check it multiple times to ensure 
+				I feel it is done correctly.
+			</p>
+		</header
+
+		<section>
+			<h3>Decisions for Stock_Item</h3>
+			<p>
+				The first entity to be dealt with is the Stock Item. What this means is
+				what items are in store to purchase. When running a programme to keep
+				track of the stock items, what is needed to distinush any item from 
+				another is six attributes. The most important is the five digit unique 
+				identity code. This would allow the user of the programme to know 
+				instantly what the item is. There will be other details including 
+				the item type, how much it was purchased from the supplier
+				(import_price), how much it will be sold for (export_price), how many 
+				in store (quatity) and the description behind the item. This would be,
+				example a game console, what the speed of the console is and how to 
+				operate it on some level. It would also have the processor speed and 
+				what type of machines are needed to effectly run the console.
+			</p>
+			<h5>Relationships with other entities</h5>
+			<p>
+				It has a many to many relationship with supplier entity and one to many 
+				relationship with game entity. The reason behind these entities is one 
+				factor behind the two. That is how many can each have between the 
+				relationship. With supplier entity, stock can have many suppliers and the 
+				supplier can have many supplies of stock. With the game entity, stock can 
+				have many games but game can only be of one stock (type). The game would 
+				share the same ID code as one of the stock item due to the fact it is 
+				essentially part of the stock items itself.
+			</p>
+			
+			<h3>Decisions for Games</h3>
+			<p>
+			There are two main features of games wich makes the unique. Their offical title
+			and their stock Id code. These two features can be combine to make an even more
+			unique item. However, this is not nesscary. The other features on the game itself
+			is the consoles needed (could be more than one), the release date, age group and 
+			tthe required skills to play the game itself. We need to make sure the naming 
+			convection of the game itself is apporiate to the target audience. Once that is 
+			completed, the item itself will have a description (under the relationship with 
+			stock item). Included in this desciption is the skills required to play the game.
+			</p>
+			<h5>Relationships with other entities</h5>
+			<p>
+				It has a many to many relationship with Reviewer entity and many to one
+				relationship with stock_item entity. Reviewers can review mutliple games and
+				one game can have many reviewers. One stock can have many games but one game 
+				cannot be many stock. 
+			</p>
+			
+			<h3>Decisions for Supplier</h3>
+			<p>
+				The supplier itself is a company, therefore its name would be unique. Their
+				main email and the id code assigned to them are both unique, as to effectly 
+				allow them to stand out. This would make three unique features, allowing the  
+				build of a onumious unique code. Their phone number, sales representive and 
+				stock supplied could be competed by other companies, making the other features
+				not unique. Therfore the company name, their main email and company code are 
+				their primary keys. Their code must be of five digits and their email must 
+				have an '@' in it.
+			</p>
+			
+			<h5>Relationships with other entities</h5>
+			<p>
+				It has a many to many relantion with stock item and sale representives, as 
+				stock can be supplied by many suppliers and suppliers can supply many stock 
+				items. With sale representives, there can be many sale representive working 
+				for a supplier and and sale representive can work for more than one supplier.
+				With supply order, it is one to many relantion as the supplier can supply more
+				than one order but supply orders can be from one company only.  
+			</p>
+			
+			<h3>Decisions for Sale Representive</h3>
+			<p>
+				The sale representive is someone who a person works with for business reasons. 
+				The name, phone number and email of that sale representive may not be unique. 
+				However, each one has a five digit unique code, which can be used to track 
+				their services. Because of this, that would be the primary key.
+			</p>
+			
+			<h5>Relationships with other entities</h5>
+			<p>
+				It has a one to many relantion with supply order and a many to many relantion 
+				with suppliers, as an order can come through one sale representive at a time 
+				but one sale representive can do many supply order. One supplier company can many 
+				sale representive and one sale representive can work for mutliple suppliers.
+			</p>
+			
+			<h3>Decisions on supply order</h3>
+			<p>
+				Supply order are very unique, as not only do they have their own six unique code,
+				but adopt the sale representive unique code, the companies unique code, the 
+				company name and their main email as part of their unique features (due to their 
+				many to one relantions). As a result of these, they are unique in many of their 
+				own ways. It takes other primary keys as unique foreign keys as well as adopting 
+				it own unique primary key.
+			</p>
+			
+			<h3>Decisions on reviewers</h3>
+			<p>
+				Reviewers are only linked to the game sector, as that is all they can review. There 
+				is a many to many relation with games, as one reviewer can review more than one 
+				game, as well as one game can have many reviewers. The reviewers have a unique username 
+				and a list of the  games they already have reviewed. This is due to the fact they cannot 
+				review the same twice. Because of this, the username and the review list of games 
+				are the primary keys.
+			</p>
+		</section>
+
+		<footer>
+			<h2>Site created by C16315253,DT-228/2,William Carey &copy:2017</h2>
+		</footer>
+	</body>
+</html> 

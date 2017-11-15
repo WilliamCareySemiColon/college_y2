@@ -1,0 +1,48 @@
+model BankSys
+
+class Customer
+	attributes
+	 Name: String
+	 
+	operations
+	
+	 depositMoney(x:Integer, acc:BankAccount)
+	 begin
+	 acc.deposit(x)
+	 end
+	  
+	  withdrawMoney(x:Integer, acc:BankAccount)
+	  begin
+	   acc.withdraw(x)
+	  end
+end
+
+class BankAccount
+	attributes
+	 balance: Integer
+	 accNo: String
+	operations
+	 deposit(amount : Integer)
+	  begin
+	   self.balance := self.balance + amount
+	  end
+	  withdraw(amount: Integer)
+	  begin
+	   self.balance :=self.balance - amount
+	  end
+end
+
+class CurrentAccount < BankAccount
+	attributes
+	 od_limit: Integer
+end
+
+class SavingsAccount < BankAccount
+	attributes
+	 rate: Real
+end
+
+association HasAccounts between
+	Customer[1]
+	BankAccount[*] role accounts
+end
