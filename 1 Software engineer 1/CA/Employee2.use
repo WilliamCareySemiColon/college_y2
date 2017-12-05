@@ -1,0 +1,50 @@
+model Employee
+
+--classes
+
+class Person
+attributes
+name: String
+age: Integer
+end
+
+class Contract 
+attributes
+salary : Integer
+operations
+raiseSalary(rate : Integer) : Integer
+begin
+self.salary := self.salary + rate;
+result := self.salary
+end
+end
+
+class Company
+attributes
+name: String
+location: String
+operations
+hire(p : Person, q: Contract)
+begin
+insert(p, q) into hiredInto;
+q.salary := 20000
+end
+fire(p : Person, q: Contract)
+begin
+q.salary := 0;
+delete(p, q) from hiredInto
+end
+end
+
+-- associations
+
+association WorksFor between
+Contract[*] role working
+Company[1] role employer
+end
+
+association hiredInto between
+  Person[*]
+  Contract[1]
+end
+

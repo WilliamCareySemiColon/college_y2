@@ -1,0 +1,51 @@
+model myPets
+
+class Person
+  attributes
+    name : String
+    student_id : String
+    bank_balance : Integer
+end
+
+class PetOwner < Person
+  attributes
+    vetCost: Integer
+end
+
+class Animal
+  attributes
+    name : String
+    age : Integer
+    visits_to_vet : Integer
+end
+
+class Cat < Animal
+  attributes
+    type : String
+    hunts : Boolean
+end
+
+class Dog < Animal
+  attributes
+    bark : String
+    energetic : Boolean
+end
+
+
+class Veterinarian
+  attributes
+    name : String
+    tel : String
+    visit_cost : Integer
+end
+
+
+association Owns between
+  PetOwner[1]
+  Animal[1]
+end
+
+association Treats between
+  Veterinarian[1]
+  Animal[*]
+end

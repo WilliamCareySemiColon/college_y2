@@ -63,7 +63,7 @@ void  execute(char **argv)
      pid_t  pid;
      int    status;
 
- //    printf("test execute fnt\n");
+	//printf("test execute fnt\n");
 
     if ((pid = fork()) < 0)
     {     /* fork a child process           */

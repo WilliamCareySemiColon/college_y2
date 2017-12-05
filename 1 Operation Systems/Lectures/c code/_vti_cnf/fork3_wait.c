@@ -1,6 +1,44 @@
-vti_encoding:SR|utf8-nl
-vti_timelastmodified:TR|18 Oct 2016 11:39:41 -0000
-vti_extenderversion:SR|12.0.0.6500
-vti_cacheddtm:TX|18 Oct 2016 11:39:41 -0000
-vti_filesize:IR|964
-vti_backlinkinfo:VX|
+ /*  variation of program can be found at: http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/create.html */
+
+
+#include  <stdio.h>
+#include<unistd.h>
+#include  <sys/types.h>
+
+#define   MAX_COUNT  200
+
+void  ChildProcess(void);                /* child process prototype  */
+void  ParentProcess(void);               /* parent process prototype */
+
+void  main(void)
+{
+     pid_t  pid;
+
+     pid = fork();
+     if (pid == 0) 
+          ChildProcess();
+     else 
+	 {
+          ParentProcess();
+		  pid = wait(&status);
+	 }	  
+}
+
+void  ChildProcess(void)
+{
+     int   i;
+
+     for (i = 1; i <= MAX_COUNT; i++)
+          printf("   This line is from child, value = %d\n", i);
+     printf("   *** Child process is done ***\n");
+}
+
+void  ParentProcess(void)
+{
+     int   i;
+
+		 
+     for (i = 1; i <= MAX_COUNT; i++)
+          printf("This line is from parent, value = %d\n", i);
+     printf("*** Parent is done ***\n");
+}

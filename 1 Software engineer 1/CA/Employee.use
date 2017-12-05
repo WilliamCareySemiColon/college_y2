@@ -1,0 +1,42 @@
+model Employee
+
+--classes
+
+class Person
+attributes
+name: String
+age: Integer
+salary : Integer
+operations
+raiseSalary(rate : Integer) : Integer
+begin
+self.salary := self.salary + rate;
+result := self.salary
+end
+end
+
+class Company
+attributes
+name: String
+location: String
+operations
+hire(p : Person)
+begin
+insert(p, self) into WorksFor;
+p.salary := 20000
+end
+fire(p : Person)
+begin
+p.salary := 0;
+delete(p,self) from WorksFor
+end
+end
+
+-- associations
+
+association WorksFor between
+Person[*] role employee
+Company[1] role employer
+end
+
+
