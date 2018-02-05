@@ -1,0 +1,52 @@
+-- Example illustrating pre- and postconditions
+
+model Employee
+
+-- classes
+
+class Person
+attributes
+  name : String
+  age : Integer
+  salary : Real
+operations
+  raiseSalary(rate : Real) : Real
+end
+
+class Contract
+attributes
+jobTitle: String
+salary: Real
+hoursPerWeek: Integer
+end
+
+class Company
+attributes
+  name : String
+  location : String
+operations
+  hire(p : Person, c : Contract)
+  begin
+  insert(p, c) into hiredInto;
+  p.salary := p.salary + 20000;
+  insert(c,self) into worksFor
+  end
+  fire(p : Person, c : Contract)
+  begin
+  delete(c,self) from worksFor;
+  p.salary := p.salary - 20000;
+  delete(p, c) from hiredInto
+  end
+end
+
+-- associations
+
+association hiredInto between
+  Person[1] role employee
+  Contract[*] role Job
+end
+
+association worksFor between
+Contract[*] role JobDescription
+Company[0..1] role employer
+end
