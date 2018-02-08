@@ -3,11 +3,11 @@
 !new Person('joe')
 !joe.name := 'joe'
 !joe.age := 17
-!joe.salary := 200000.0
+!joe.salary := 0.0
 !new Person('sue')
 !sue.name := 'sue'
 !sue.age := 22
-!sue.salary := 200000.0
+!sue.salary := 0.0
 !new Contract('itTechnician')
 !itTechnician.jobTitle := 'itTechnician'
 !itTechnician.hoursPerWeek := 40
@@ -20,3 +20,8 @@
 !Microsoft.name := 'microsoft'
 !Microsoft.location := 'dublin'
 !Microsoft.hire(sue, itTechnician)
+!new Contract('SoftwareEngineer')
+!SoftwareEngineer.jobTitle := 'SoftwareEngineer'
+!SoftwareEngineer.hoursPerWeek := 40
+!SoftwareEngineer.salary := 25000.0
+!Microsoft.hire(sue, SoftwareEngineer)

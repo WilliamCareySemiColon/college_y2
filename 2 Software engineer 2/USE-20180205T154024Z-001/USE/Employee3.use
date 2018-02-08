@@ -28,13 +28,13 @@ operations
   hire(p : Person, c : Contract)
   begin
   insert(p, c) into hiredInto;
-  p.salary := p.salary + 20000;
+  p.salary := p.salary + c.salary;
   insert(c,self) into worksFor
   end
   fire(p : Person, c : Contract)
   begin
   delete(c,self) from worksFor;
-  p.salary := p.salary - 20000;
+  p.salary := p.salary - c.salary;
   delete(p, c) from hiredInto
   end
 end
@@ -50,3 +50,23 @@ association worksFor between
 Contract[*] role JobDescription
 Company[0..1] role employer
 end
+
+-- constraints
+
+constraints
+
+context Person::raiseSalary(rate : Real) : Real
+  post raiseSalaryPost: 
+    salary = salary@pre * (1.0 + rate)
+  post resultPost:
+    result = salary
+
+context Company::hire(p : Person, c : Contract)
+  pre  hirePre1: p.isDefined()
+  pre  hirePre2: c.isDefined()
+  pre  hirePre3: JobDescription->excludes(c)
+  post hirePost: JobDescription->includes(c)
+
+context Company::fire(p : Person, c : Contract)
+  pre  firePre:  JobDescription->includes(c)
+  post firePost: JobDescription->excludes(c)
