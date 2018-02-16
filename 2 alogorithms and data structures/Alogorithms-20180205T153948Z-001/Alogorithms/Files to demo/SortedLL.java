@@ -50,7 +50,7 @@ class SortedLL
 		}
     }    
     
-    public void remove(int x) 
+    public boolean remove(int x) 
 	{
         Node prev = null, curr = head, t = new Node(); 
 		t.data = z.data = x;
@@ -58,7 +58,7 @@ class SortedLL
 		
 		if (head == z)
 		{
-			System.out.println("There is no nodes currently");
+			return false;
 		}
 		
 		else
@@ -68,11 +68,20 @@ class SortedLL
 				prev = curr;
 				curr = curr.next;
 			}
-			if (z.next == curr)
-				return;
-			
-			prev.next = curr.next;	
+			if (z == curr)
+				return false;
+
+			if (prev == null)
+				head = curr.next;
+			else
+				prev.next = curr.next;	
+			return true;
 		}
+	}
+
+	public boolean isEmpty()
+	{
+		return (head == z ? true : false);
 	}
 
     public void display()
@@ -86,7 +95,7 @@ class SortedLL
         System.out.println("Z\n");
     }
     
-    public static void main(String args[])   
+   /* public static void main(String args[])   
     {
         SortedLL list = new SortedLL();
         list.display();
@@ -110,5 +119,38 @@ class SortedLL
            list.display();            
         }
         
-    }
+    	}*/
+	    public static void main(String args[])   
+	    {
+		    SortedLL list = new SortedLL();
+		    list.display();
+		    
+		    double x;
+		    int i, r;
+		    
+		   for(i = 1; i <= 5; ++i)
+		   {
+			   x =  (Math.random()*100.0);
+			   r = (int) x; 
+			   System.out.println("Inserting " + r);
+			   list.insert(r);
+			   list.display();            
+		   }
+		    
+		    
+		    
+		    while(!list.isEmpty())  
+		    {
+			    System.out.println("\nInput a value to remove: ");
+			    Scanner in = new Scanner(System.in);
+			    r = in.nextInt();
+			    if(list.remove(r)) 
+			    {
+			        System.out.println("\nSuccessfully removed: " + r);
+			    	list.display(); 
+				}
+			    else 
+			    	System.out.println("\nValue not in list: " + r);                        
+	    	}
+	    }
 }
