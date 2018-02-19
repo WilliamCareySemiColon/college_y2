@@ -1,0 +1,20 @@
+try - tries to do the logic behind the programme
+
+catch - cathches the exception if the programme fails
+
+finally - the programme that will always happen
+
+throws
+
+eg FunctionName throws IO exception
+
+throw 
+
+eg throw new IO exception
+
+throw new Exception("You have some exception")
+throw new IOException("Connection failed!!")
+
+Runtime exception - eg null pointer array out of bounds - not needed to be caught
+
+exception -> needed to be caught
