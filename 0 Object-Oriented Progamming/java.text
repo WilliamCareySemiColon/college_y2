@@ -15,6 +15,14 @@ eg throw new IO exception
 throw new Exception("You have some exception")
 throw new IOException("Connection failed!!")
 
+throw use for throwing actual Exception and throws declare at method it might throws Exception.
+
+public int findMax(int[] array) throws Exception{
+    if(array==null)
+       throw new NullPointerException(...);
+    ...
+}
+
 Runtime exception - eg null pointer array out of bounds - not needed to be caught
 
 exception -> needed to be caught
