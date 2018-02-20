@@ -1,0 +1,42 @@
+Feb 19, 2018 7:51:56 PM java.util.prefs.WindowsPreferences <init>
+WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+USE version 5.0.0, Copyright (C) 1999-2017 University of Bremen
+use> !new Conpany('ibm')
+<input>:1:0: Expected type name, found `Conpany'.
+use> !new Company('ibm')
+use> !new Company('microsoft')
+use> !new Person('joe')
+use> !new Person('tim')
+use> !joe.name := 'joe'
+use> !tim.name := 'tim'
+use> !joe.age := '23'
+<input>:1:0: Type mismatch in assignment expression. Expected type `Integer', found `String'.
+use> !joe.age := 23
+use> !tim.age := 23
+use> !insert (joe,ibm) into WorksFor
+use> !insert (tim,ibm) into WorksFor
+use> !openter microsoft hire(joe)
+precondition `hirePre1' is true
+precondition `hirePre2' is true
+use> !insert (joe,microsoft) into WorksFor
+use> !opexit
+postcondition `hirePost' is true
+use> !delete (joe,microsoft) from WorksFor
+use> !tim.salary := 20000
+use> !joe.salary := 40000
+use> !openter tim raiseSalary(0.1)
+use> !tim.salary := 22000
+use> !opexit 22000
+postcondition `raiseSalaryPost' is true
+postcondition `resultPost' is true
+use> !openter joe raiseSalary(0.1)
+use> !joe.salary := 44000
+use> !opexit 42000
+postcondition `raiseSalaryPost' is true
+postcondition `resultPost' is false
+  result : Integer = 42000
+  self : Person = joe
+  self.salary : Integer = 44000
+  (result = self.salary) : Boolean = false
+Error: postcondition false in operation call `Person::raiseSalary(self:joe, rate:0.1)'.
+use> 

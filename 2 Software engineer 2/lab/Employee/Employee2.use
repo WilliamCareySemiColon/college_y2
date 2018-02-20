@@ -27,17 +27,7 @@ attributes
   location : String
 operations
   hire(p : Person, c : Contract)
-  begin
-  insert(p, c) into hiredInto;
-  p.income := p.income + c.salary;
-  insert(c,self) into worksFor
-  end
   fire(p : Person, c : Contract)
-  begin
-  delete(c,self) from worksFor;
-  p.income := p.income - c.salary;
-  delete(p, c) from hiredInto
-  end
 end
 
 -- associations
