@@ -47,7 +47,7 @@ end
 constraints
 
 context Contract::raiseSalary(rate : Real, p: Person) : Real
-  pre personAge : p.age > 21
+  pre personAge : p.age > 20
   post raiseSalaryPost: 
     salary = salary@pre * (1.0 + rate)
   post resultPost:
