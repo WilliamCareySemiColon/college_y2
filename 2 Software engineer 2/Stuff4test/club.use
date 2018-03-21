@@ -1,0 +1,85 @@
+model Clubs_Teams
+
+class Club
+  attributes
+    budget : Integer
+  operations
+    addTeam(t : Team)  
+  
+end
+
+class Team
+  attributes
+    name : String
+    salaries : Integer init = 0
+  operations
+    addPlayer(p : Player, q : Integer)
+    begin
+    p.setPay(q);
+    !insert (p,self) into PlaysOn
+    end
+end
+
+
+class Person  
+  attributes 
+    name : String
+    age : Integer
+end
+
+
+class Player < Person
+  attributes
+    pay : Integer init = 0
+    goals : Integer init = 0
+  operations
+    setPay(x : Integer)
+    begin
+    pay = x
+    end
+end
+
+class Manager < Person
+  operations
+    hire(p: Player, t:Team, salary : Integer)
+    hirePlayer(p : Player, t : Team, pay : Integer)
+    begin
+    t.addPlayer(p, pay)
+    end
+end
+    
+
+ 
+association Owns between
+    Club[1]
+    Team[1..*] role teams
+end
+
+association PlaysOn between
+  Player[1..*] role players
+  Team[1..*] role teams
+end
+
+association Manages between
+  Manager[1] 
+  Club[1]
+end
+  
+    
+
+constraints
+
+context Club::addTeam(t:Team)
+  pre cond1: self.teams->excludes(t)
+  post cond2: self.teams->includes(t)
+  
+context Team::addPlayer(p:Player)
+  pre cond1 : self.players->excludes(p)
+  post cond2 : self.players->includes(p)
+  
+context Manager::hire(p: Player, t:Team, salary : Integer)
+  pre cond1 : club.teams->includes(t)
+  pre cond2 : t.salaries + p.pay < club.budget 
+  pre cond3 : if p.age < 21 then salary < 500 else salary < t.salaries endif     
+  post cond5 : t.salaries = t.salaries@pre + p.pay
+  post cond6: p.pay = salary
