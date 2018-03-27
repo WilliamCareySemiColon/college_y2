@@ -44,7 +44,7 @@ class Heap
         //a[0] = 0;
         //dist[0] = 0;
 
-        while( dist[v] > dist[a[k/2]]  && k != 0) {
+        while( dist[v] < dist[a[k/2]]  && k != 0) {
             a[k] = a[k/2];
 			hPos[a[k]] = k;
             k = k/2;
@@ -60,7 +60,7 @@ class Heap
         int v, j;
        
         v = a[k];  
-        while( dist[k] <= dist[N/2]) {
+        while( k <= N/2) {
             j = 2 * k;
             if(j < N && dist[a[j]] < dist[a[j+1]]) ++j;
             if( dist[v] >= dist[a[j]]) break;

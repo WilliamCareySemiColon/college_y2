@@ -26,9 +26,9 @@ class GraphLists {
     // default constructor
     public GraphLists(String graphFile)  throws IOException
     {
-        int u, v;
-        int e, wgt;
-        Node t;
+        int v1, v2, ed;
+        int e,v;
+        Node node, temp;
 
         FileReader fr = new FileReader(graphFile);
 		BufferedReader reader = new BufferedReader(fr);
@@ -47,7 +47,7 @@ class GraphLists {
         
         // create adjacency lists, initialised to sentinel node z
         visited = new int[V+1];
-        adj = new Node[E+1];
+        adj = new Node[V+1];
 
         for(v = 1; v <= V; ++v)
            adj[v] = z;               
@@ -60,14 +60,23 @@ class GraphLists {
        {
             line = reader.readLine();
             parts = line.split(splits);
-            Node node = new Node();
-            node.vert = Integer.parseInt(parts[0]);
-            node.wgt = Integer.parseInt(parts[2]); 
-            node.next = adj[Integer.parseInt(parts[1])];
-            v = Integer.parseInt(parts[1]); 
+            v1 = Integer.parseInt(parts[0]);
+            v2 = Integer.parseInt(parts[1]);
+            ed = Integer.parseInt(parts[2]);
             
-            System.out.println("Edge " + toChar(node.vert) + "--(" + node.wgt + ")--" + toChar(v));    
-            adj[e] = node; 
+            System.out.println("Edge " + toChar(v1) + "--(" + ed + ")--" + toChar(v2));
+
+            temp = adj[v1];
+            adj[v1] = new Node();
+            adj[v1].vert = v2;
+            adj[v1].wgt = ed;
+            adj[v1].next = temp;
+
+            temp = adj[v2];
+            adj[v2] = new Node();
+            adj[v2].vert = v1;
+            adj[v2].wgt = ed;
+            adj[v2].next = temp;
        }           
     }
    
@@ -86,6 +95,7 @@ class GraphLists {
             System.out.print("\nadj[" + toChar(v) + "] ->" );
             for(n = adj[v]; n != z; n = n.next) 
                 System.out.print(" |" + toChar(n.vert) + " | " + n.wgt + "| ->");    
+            System.out.print(" NULL");
         }
         System.out.println("");
     }
@@ -108,7 +118,7 @@ class GraphLists {
     {
         visited[v] = ++id;
 
-        System.out.println("visited vertex " + toChar(v) + " Alongside edge " + adj[v].wgt);
+        System.out.println("visited vertex " + toChar(v) + " Alongside edge " + adj[v].wgt + ", coming from vertex " + toChar(prev));
         /*for(int u : adj[v])
         {
             if (visited[u] == 0 && u != 0)
@@ -134,7 +144,7 @@ class GraphLists {
        
         g.display();
         
-        //g.DF(s);
+        g.DF(s);
     }
 
 }
