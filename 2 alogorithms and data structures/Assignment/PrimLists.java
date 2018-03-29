@@ -117,10 +117,6 @@ class Graph {
     private Node z;
     private int[] mst;
     
-    // used for traversing graph
-    private int[] visited;
-    private int id;
-    
     
     /// default constructor
     public Graph(String graphFile)  throws IOException
@@ -145,7 +141,6 @@ class Graph {
         z.next = z;
         
         // create adjacency lists, initialised to sentinel node z
-        visited = new int[V+1];
         adj = new Node[V+1];
 
         for(v = 1; v <= V; ++v)
@@ -204,23 +199,29 @@ class Graph {
 	public void MST_Prim(int s)
 	{
         int v;
-        int wgt, wgt_sum = 0;
+        int wgt_sum = 0;
         int[]  dist, parent, hPos;
-        Node t;
 
         //code here
         dist = new int[V + 1];
         hPos = new int[V + 1];
         parent = new int[V + 1];
+
+        for (int i = 1; i <= V; i++)
+            dist[i] = Integer.MAX_VALUE;
+
         dist[s] = 0;
+        parent[s] = 0;
 
         Heap pq =  new Heap(V, dist, hPos);
         pq.insert(s);
         
+        System.out.println("\nSource point is "+toChar(s));
+
         while ( !(pq.isEmpty()) ) 
         {
             v = pq.remove();
-            dist[v] = v;
+            dist[v] = -dist[v];
             Node u = adj[v];
             while (u != z)
             {
@@ -232,16 +233,21 @@ class Graph {
                     if (hPos[u.vert] == 0)
                         pq.insert(u.vert);
                     else
-                        pq.siftUp(u.vert);
+                        pq.siftUp(hPos[u.vert]);
                 }
 
-                wgt_sum += u.wgt;
                 u = u.next;
-            }         
+            }  
         }
+
+        for (int d: dist)
+            wgt_sum += Math.abs(d);
+
         System.out.print("\n\nWeight of MST = " + wgt_sum + "\n");
         
-        mst = parent;                      		
+        mst = parent;
+
+        showMST();                   		
 	}
     
     public void showMST()
@@ -268,9 +274,7 @@ public class PrimLists {
        
         g.display();
 
-        g.MST_Prim(5);
-
-        g.showMST();
+        g.MST_Prim(4);
     }
     
     
