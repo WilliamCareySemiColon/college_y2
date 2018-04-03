@@ -13,40 +13,48 @@
     <node id="Copy" sizeCalculated="true" type="Class">
         <name>Copy</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>137.0</x>
-            <y>257.0</y>
+            <x>229.0</x>
+            <y>36.0</y>
         </strategy>
         <hidden>false</hidden>
     </node>
     <node id="Book" sizeCalculated="true" type="Class">
         <name>Book</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>16.0</x>
-            <y>6.0</y>
+            <x>5.0</x>
+            <y>7.0</y>
         </strategy>
         <hidden>false</hidden>
     </node>
     <node id="Staff" sizeCalculated="true" type="Class">
         <name>Staff</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>416.0</x>
-            <y>229.0</y>
+            <x>546.0</x>
+            <y>14.0</y>
         </strategy>
         <hidden>false</hidden>
     </node>
     <node id="Journal" sizeCalculated="true" type="Class">
         <name>Journal</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>411.0</x>
-            <y>16.0</y>
+            <x>568.0</x>
+            <y>274.0</y>
         </strategy>
         <hidden>false</hidden>
     </node>
     <node id="Member" sizeCalculated="true" type="Class">
         <name>Member</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-            <x>232.0</x>
-            <y>6.0</y>
+            <x>229.0</x>
+            <y>234.0</y>
+        </strategy>
+        <hidden>false</hidden>
+    </node>
+    <node id="BookStatus" sizeCalculated="true" type="Enumeration">
+        <name>BookStatus</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+            <x>32.0</x>
+            <y>293.0</y>
         </strategy>
         <hidden>false</hidden>
     </node>
@@ -55,55 +63,12 @@
         <target>Copy</target>
         <name>HasBorrowed</name>
         <properties>
-            <edgeproperty id="HasBorrowed::AssociationName"
-                sizeCalculated="true" type="associationName"
-                userDefined="true" visible="true">
-                <name>HasBorrowed</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-                    <userOffsetX>42.0</userOffsetX>
-                    <userOffsetY>16.0</userOffsetY>
-                    <offsetX>0.0</offsetX>
-                    <offsetY>-10.0</offsetY>
-                    <related length="2">
-                        <related0>HasBorrowed::WayPoint::0</related0>
-                        <related1>HasBorrowed::WayPoint::1</related1>
-                    </related>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="HasBorrowed::source::multiplicity"
-                sizeCalculated="true" type="multiplicity"
-                userDefined="true" visible="true">
-                <name>0..1</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>76.0</userOffsetX>
-                    <userOffsetY>12.0</userOffsetY>
-                    <attached>HasBorrowed::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>BOTTOM</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="HasBorrowed::source::rolename"
-                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-                <name>MemberBorrower</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>2.0</userOffsetX>
-                    <userOffsetY>-3.0</userOffsetY>
-                    <attached>HasBorrowed::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>TOP</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
             <edgeproperty id="HasBorrowed::target::rolename"
                 sizeCalculated="true" type="rolename" userDefined="true" visible="true">
                 <name>borrowed</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>3.0</userOffsetX>
-                    <userOffsetY>-17.0</userOffsetY>
+                    <userOffsetX>-4.0</userOffsetX>
+                    <userOffsetY>4.0</userOffsetY>
                     <attached>HasBorrowed::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
@@ -117,8 +82,51 @@
                 <name>*</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
                     <userOffsetX>38.0</userOffsetX>
-                    <userOffsetY>7.0</userOffsetY>
+                    <userOffsetY>2.0</userOffsetY>
                     <attached>HasBorrowed::WayPoint::1</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>BOTTOM</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="HasBorrowed::AssociationName"
+                sizeCalculated="true" type="associationName"
+                userDefined="true" visible="true">
+                <name>HasBorrowed</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                    <userOffsetX>37.0</userOffsetX>
+                    <userOffsetY>3.0</userOffsetY>
+                    <offsetX>0.0</offsetX>
+                    <offsetY>-10.0</offsetY>
+                    <related length="2">
+                        <related0>HasBorrowed::WayPoint::0</related0>
+                        <related1>HasBorrowed::WayPoint::1</related1>
+                    </related>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="HasBorrowed::source::rolename"
+                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+                <name>MemberBorrower</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>-9.0</userOffsetX>
+                    <userOffsetY>-7.0</userOffsetY>
+                    <attached>HasBorrowed::WayPoint::0</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>TOP</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="HasBorrowed::source::multiplicity"
+                sizeCalculated="true" type="multiplicity"
+                userDefined="true" visible="true">
+                <name>0..1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>66.0</userOffsetX>
+                    <userOffsetY>1.0</userOffsetY>
+                    <attached>HasBorrowed::WayPoint::0</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
                     <placement>BOTTOM</placement>
@@ -159,55 +167,12 @@
         <target>Book</target>
         <name>CopyOf</name>
         <properties>
-            <edgeproperty id="CopyOf::AssociationName"
-                sizeCalculated="true" type="associationName"
-                userDefined="true" visible="true">
-                <name>CopyOf</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-                    <userOffsetX>-46.0</userOffsetX>
-                    <userOffsetY>14.0</userOffsetY>
-                    <offsetX>0.0</offsetX>
-                    <offsetY>-10.0</offsetY>
-                    <related length="2">
-                        <related0>CopyOf::WayPoint::0</related0>
-                        <related1>CopyOf::WayPoint::1</related1>
-                    </related>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="CopyOf::source::rolename"
-                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-                <name>copies</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>-5.0</userOffsetX>
-                    <userOffsetY>-1.0</userOffsetY>
-                    <attached>CopyOf::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>TOP</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="CopyOf::source::multiplicity"
-                sizeCalculated="true" type="multiplicity"
-                userDefined="true" visible="true">
-                <name>*</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>33.0</userOffsetX>
-                    <userOffsetY>0.0</userOffsetY>
-                    <attached>CopyOf::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>BOTTOM</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
             <edgeproperty id="CopyOf::target::rolename"
                 sizeCalculated="true" type="rolename" userDefined="true" visible="true">
                 <name>book</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>-12.0</userOffsetX>
-                    <userOffsetY>2.0</userOffsetY>
+                    <userOffsetX>7.0</userOffsetX>
+                    <userOffsetY>16.0</userOffsetY>
                     <attached>CopyOf::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
@@ -220,12 +185,55 @@
                 userDefined="true" visible="true">
                 <name>1</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>34.0</userOffsetX>
-                    <userOffsetY>0.0</userOffsetY>
+                    <userOffsetX>10.0</userOffsetX>
+                    <userOffsetY>-14.0</userOffsetY>
                     <attached>CopyOf::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
                     <placement>BOTTOM</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="CopyOf::AssociationName"
+                sizeCalculated="true" type="associationName"
+                userDefined="true" visible="true">
+                <name>CopyOf</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>-8.0</userOffsetY>
+                    <offsetX>0.0</offsetX>
+                    <offsetY>-10.0</offsetY>
+                    <related length="2">
+                        <related0>CopyOf::WayPoint::0</related0>
+                        <related1>CopyOf::WayPoint::1</related1>
+                    </related>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="CopyOf::source::multiplicity"
+                sizeCalculated="true" type="multiplicity"
+                userDefined="true" visible="true">
+                <name>*</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>1.0</userOffsetX>
+                    <userOffsetY>-9.0</userOffsetY>
+                    <attached>CopyOf::WayPoint::0</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>BOTTOM</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="CopyOf::source::rolename"
+                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+                <name>copies</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>7.0</userOffsetX>
+                    <userOffsetY>20.0</userOffsetY>
+                    <attached>CopyOf::WayPoint::0</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>TOP</placement>
                 </strategy>
                 <hidden>false</hidden>
             </edgeproperty>
@@ -261,13 +269,40 @@
         <target>Journal</target>
         <name>JournalBorrowed</name>
         <properties>
+            <edgeproperty id="JournalBorrowed::target::multiplicity"
+                sizeCalculated="true" type="multiplicity"
+                userDefined="true" visible="true">
+                <name>1</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>46.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                    <attached>JournalBorrowed::WayPoint::1</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>BOTTOM</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="JournalBorrowed::target::rolename"
+                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+                <name>journalBorrowed</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>-8.0</userOffsetX>
+                    <userOffsetY>-8.0</userOffsetY>
+                    <attached>JournalBorrowed::WayPoint::1</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>TOP</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
             <edgeproperty id="JournalBorrowed::AssociationName"
                 sizeCalculated="true" type="associationName"
                 userDefined="true" visible="true">
                 <name>JournalBorrowed</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-                    <userOffsetX>56.0</userOffsetX>
-                    <userOffsetY>8.0</userOffsetY>
+                    <userOffsetX>65.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
                     <offsetX>0.0</offsetX>
                     <offsetY>-10.0</offsetY>
                     <related length="2">
@@ -281,8 +316,8 @@
                 sizeCalculated="true" type="rolename" userDefined="true" visible="true">
                 <name>StaffBorrower</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>-15.0</userOffsetX>
-                    <userOffsetY>-4.0</userOffsetY>
+                    <userOffsetX>-18.0</userOffsetX>
+                    <userOffsetY>16.0</userOffsetY>
                     <attached>JournalBorrowed::WayPoint::0</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
@@ -295,36 +330,9 @@
                 userDefined="true" visible="true">
                 <name>0..1</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>56.0</userOffsetX>
-                    <userOffsetY>-1.0</userOffsetY>
+                    <userOffsetX>48.0</userOffsetX>
+                    <userOffsetY>8.0</userOffsetY>
                     <attached>JournalBorrowed::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>BOTTOM</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="JournalBorrowed::target::rolename"
-                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-                <name>journalBorrowed</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>-5.0</userOffsetX>
-                    <userOffsetY>9.0</userOffsetY>
-                    <attached>JournalBorrowed::WayPoint::1</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>TOP</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="JournalBorrowed::target::multiplicity"
-                sizeCalculated="true" type="multiplicity"
-                userDefined="true" visible="true">
-                <name>1</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>50.0</userOffsetX>
-                    <userOffsetY>7.0</userOffsetY>
-                    <attached>JournalBorrowed::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
                     <placement>BOTTOM</placement>
@@ -365,46 +373,16 @@
         <target>Copy</target>
         <name>CopyBorrowed</name>
         <properties>
-            <edgeproperty id="CopyBorrowed::AssociationName"
-                sizeCalculated="true" type="associationName"
-                userDefined="true" visible="true">
-                <name>CopyBorrowed</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-                    <userOffsetX>-10.0</userOffsetX>
-                    <userOffsetY>-9.0</userOffsetY>
-                    <offsetX>0.0</offsetX>
-                    <offsetY>-10.0</offsetY>
-                    <related length="2">
-                        <related0>CopyBorrowed::WayPoint::0</related0>
-                        <related1>CopyBorrowed::WayPoint::1</related1>
-                    </related>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="CopyBorrowed::source::rolename"
+            <edgeproperty id="CopyBorrowed::target::rolename"
                 sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-                <name>borrower</name>
+                <name>copyBorrowed</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>2.0</userOffsetX>
-                    <userOffsetY>27.0</userOffsetY>
-                    <attached>CopyBorrowed::WayPoint::0</attached>
+                    <userOffsetX>3.0</userOffsetX>
+                    <userOffsetY>20.0</userOffsetY>
+                    <attached>CopyBorrowed::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
                     <placement>TOP</placement>
-                </strategy>
-                <hidden>false</hidden>
-            </edgeproperty>
-            <edgeproperty id="CopyBorrowed::source::multiplicity"
-                sizeCalculated="true" type="multiplicity"
-                userDefined="true" visible="true">
-                <name>0..1</name>
-                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>0.0</userOffsetX>
-                    <userOffsetY>-13.0</userOffsetY>
-                    <attached>CopyBorrowed::WayPoint::0</attached>
-                    <offset_x>8</offset_x>
-                    <offset_y>8</offset_y>
-                    <placement>BOTTOM</placement>
                 </strategy>
                 <hidden>false</hidden>
             </edgeproperty>
@@ -414,7 +392,7 @@
                 <name>*</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
                     <userOffsetX>7.0</userOffsetX>
-                    <userOffsetY>-6.0</userOffsetY>
+                    <userOffsetY>-7.0</userOffsetY>
                     <attached>CopyBorrowed::WayPoint::1</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
@@ -422,13 +400,43 @@
                 </strategy>
                 <hidden>false</hidden>
             </edgeproperty>
-            <edgeproperty id="CopyBorrowed::target::rolename"
-                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
-                <name>copyBorrowed</name>
+            <edgeproperty id="CopyBorrowed::AssociationName"
+                sizeCalculated="true" type="associationName"
+                userDefined="false" visible="true">
+                <name>CopyBorrowed</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+                    <userOffsetX>0.0</userOffsetX>
+                    <userOffsetY>0.0</userOffsetY>
+                    <offsetX>0.0</offsetX>
+                    <offsetY>-10.0</offsetY>
+                    <related length="2">
+                        <related0>CopyBorrowed::WayPoint::0</related0>
+                        <related1>CopyBorrowed::WayPoint::1</related1>
+                    </related>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="CopyBorrowed::source::multiplicity"
+                sizeCalculated="true" type="multiplicity"
+                userDefined="true" visible="true">
+                <name>0..1</name>
                 <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-                    <userOffsetX>-1.0</userOffsetX>
-                    <userOffsetY>20.0</userOffsetY>
-                    <attached>CopyBorrowed::WayPoint::1</attached>
+                    <userOffsetX>1.0</userOffsetX>
+                    <userOffsetY>-10.0</userOffsetY>
+                    <attached>CopyBorrowed::WayPoint::0</attached>
+                    <offset_x>8</offset_x>
+                    <offset_y>8</offset_y>
+                    <placement>BOTTOM</placement>
+                </strategy>
+                <hidden>false</hidden>
+            </edgeproperty>
+            <edgeproperty id="CopyBorrowed::source::rolename"
+                sizeCalculated="true" type="rolename" userDefined="true" visible="true">
+                <name>borrower</name>
+                <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+                    <userOffsetX>2.0</userOffsetX>
+                    <userOffsetY>29.0</userOffsetY>
+                    <attached>CopyBorrowed::WayPoint::0</attached>
                     <offset_x>8</offset_x>
                     <offset_y>8</offset_y>
                     <placement>TOP</placement>

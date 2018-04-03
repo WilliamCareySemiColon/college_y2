@@ -15,7 +15,6 @@
 !c1.status := 'onShelf'
 !c2.status := 'onShelf'
 !new Member('tom')
-!tom.no_onloan := 0
 !new Copy('c3')
 !new Book('WandP')
 !WandP.author := 'Tolstoy'

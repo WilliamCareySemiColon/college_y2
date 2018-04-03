@@ -1,24 +1,32 @@
 model Library
 
 --All the books associated with the system
+
+enum BookStatus { available, unavailable, onreserve}
+
 class Book
   attributes
     title : String
     author : String
+    status : BookStatus init = #available
     ShortTerm : Boolean init = false
-    no_copies : Integer init = 0
-    no_onshelf : Integer init = 0
+    no_copies : Integer init = 2
+    no_onshelf : Integer init = 2
   operations
     borrow()
     begin
-        self.no_onshelf := self.no_onshelf - 1
+        self.no_onshelf := self.no_onshelf - 1;
+        if (self.no_onshelf = 0) then 
+                self.status := #unavailable 
+        end
     end
     pre copiesOnShelf: no_copies >0
     post: no_onshelf = no_onshelf@pre - 1
 
     return()
     begin
-        self.no_onshelf := self.no_onshelf + 1
+        self.no_onshelf := self.no_onshelf + 1;
+        self.status := #available
     end
     pre copiesOnShelf: no_copies >= 0
     post: no_onshelf = no_onshelf@pre + 1
@@ -31,6 +39,20 @@ class Book
         self.no_onshelf := self.no_onshelf + 1;
         c.ShortTerm := self.ShortTerm
     end
+
+    statemachines
+        psm States
+        states                        
+            newTitle : initial
+            available       [no_onshelf > 0]
+            unavailable     [no_onshelf = 0]
+        transitions
+            newTitle ->  available  { create }
+            available -> unavailable { [no_onshelf = 1] borrow() }
+            available -> available { [no_onshelf > 1] borrow() }
+            available -> available { return() }
+            unavailable -> available { return() }
+        end
 end
 
 class Journal
@@ -100,6 +122,7 @@ class Member
         c.return()
     end
 
+    --Testing this function in !openter !opexit
     Reserve(c : Copy)
     --begin
         --c.status := 'Reserved';
@@ -219,12 +242,15 @@ context Staff::JournalReturn(j : Journal)
 context Staff::CopyBorrow(c:Copy) 
     pre limit: self.no_onloan < 12
     pre status1: c.status = 'onShelf'
-    pre cond1: self.journalBorrowed->excludes(c)
-    post cond2: self.journalBorrowed->includes(c)
+    pre cond1: self.copyBorrowed->excludes(c)
+    post cond2: self.copyBorrowed->includes(c)
     post status2: c.status = 'onLoan'
 
 context Staff::CopyReturn(c:Copy) 
     pre status: c.status = 'onLoan'
-    pre cond1: self.journalBorrowed->includes(c)
-    post cond2: self.journalBorrowed->excludes(c)
+    pre cond1: self.copyBorrowed->includes(c)
+    post cond2: self.copyBorrowed->excludes(c)
     post status2: c.status = 'onShelf'
+
+context Copy
+    inv exist: book->size() > 0
