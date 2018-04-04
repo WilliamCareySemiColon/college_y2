@@ -276,7 +276,7 @@ public Edge[] MST_Kruskal()
 class KruskalTrees {
     public static void main(String[] args) throws IOException
     {
-        String fname = "wGraph3.txt";
+        String fname = "../wGraph3.txt";
         //System.out.print("\nInput name of file with graph definition: ");
         //fname = Console.ReadLine();
 

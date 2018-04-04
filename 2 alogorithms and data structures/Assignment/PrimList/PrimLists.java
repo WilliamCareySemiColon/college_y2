@@ -268,12 +268,10 @@ public class PrimLists {
     public static void main(String[] args) throws IOException
     {
         int s = 2;
-        String fname = "wGraph3.txt";               
+        String fname = "../wGraph3.txt";               
 
         Graph g = new Graph(fname);
        
-        g.display();
-
         g.MST_Prim(4);
     }
     
