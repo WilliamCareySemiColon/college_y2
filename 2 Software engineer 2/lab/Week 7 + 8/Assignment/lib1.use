@@ -10,8 +10,8 @@ class Book
     author : String
     status : BookStatus init = #available
     ShortTerm : Boolean init = false
-    no_copies : Integer init = 2
-    no_onshelf : Integer init = 2
+    no_copies : Integer init = 0
+    no_onshelf : Integer init =02
   operations
     borrow()
     begin
@@ -47,7 +47,7 @@ class Book
             available       [no_onshelf > 0]
             unavailable     [no_onshelf = 0]
         transitions
-            newTitle ->  available  { create }
+            newTitle ->  unavailable  { create }
             available -> unavailable { [no_onshelf = 1] borrow() }
             available -> available { [no_onshelf > 1] borrow() }
             available -> available { return() }

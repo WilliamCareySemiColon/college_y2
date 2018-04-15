@@ -1,21 +1,19 @@
 // Kruskal's Minimum Spanning Tree Algorithm
 // Union-find implemented using disjoint set trees without compression
 
-import java.io.*;
-import java.util.*;    
-
-//Class edge to store all the indiviadual information about each edge and vertices 
+import java.io.*;    
+ 
 class Edge {
     public int u, v, wgt;
 
     public Edge() {
-        this(0,0,0);
+        u = 0;
+        v = 0;
+        wgt = 0;
     }
 
     public Edge( int x, int y, int w) {
-        u = x;
-        v = y;
-        wgt = w;
+        ;// missing lines
     }
     
     public void show() {
@@ -30,7 +28,6 @@ class Edge {
 }
 
 
-//Heap to sort the edges based off their weight in association with each vertices
 class Heap
 {
 	private int[] h;
@@ -39,11 +36,11 @@ class Heap
 
 
     // Bottom up heap construc
-    public Heap(int N, Edge[] edge) {
-        int i,j, temp;
-        Nmax = this.N = N;
+    public Heap(int _N, Edge[] _edge) {
+        int i;
+        Nmax = N = _N;
         h = new int[N+1];
-        this.edge = edge;
+        edge = _edge;
        
         // initially just fill heap array with 
         // indices of edge[] array.
@@ -53,24 +50,20 @@ class Heap
         // Then convert h[] into a heap
         // from the bottom up.
         for(i = N/2; i > 0; --i)
-        {
-        	siftDown(i);
-        }
-
+            ;// missing line;
     }
+
+
+
+    
+
 
     private void siftDown( int k) {
         int e, j;
 
         e = h[k];
         while( k <= N/2) {
-            j = 2*k;
-            if (j < N && edge[h[j]].wgt > edge[h[j+1]].wgt) j++;
-
-            if (edge[e].wgt < edge[h[j]].wgt) break;
-
-            h[k] = h[j];
-            k = j;
+            // missing lines
         }
         h[k] = e;
     }
@@ -101,23 +94,17 @@ class UnionFindSets
         N = V;
         treeParent = new int[V+1];
         // missing lines
-        for (int i = 1; i <= V; i++)
-        	treeParent[i] = i;
     }
 
     public int findSet( int vertex)
     {   
-        if (treeParent[vertex] == vertex)
-        	return vertex;
-    	else
-    		return findSet(treeParent[vertex]);
+        // missing lines
+        return 0;
     }
     
     public void union( int set1, int set2)
     {
-        int x = findSet(set1);
-        int y = findSet(set2);
-        treeParent[y] = x;
+        // missing
     }
     
     public void showTrees()
@@ -160,9 +147,6 @@ class UnionFindSets
     }
 }
 
-/**************************************************************************************************************************************************
-Class graph to read in a file and use the kruskal to find the MST
-**************************************************************************************************************************************************/
 class Graph 
 { 
     private int V, E;
@@ -200,9 +184,7 @@ class Graph
             
             System.out.println("Edge " + toChar(u) + "--(" + w + ")--" + toChar(v));                         
              
-            // create Edge object
-            Edge edgey = new Edge(u,v,w);
-            edge[e] = edgey;
+            // create Edge object  
         }
     }
 
@@ -227,28 +209,8 @@ public Edge[] MST_Kruskal()
     Heap h = new Heap(E, edge);
 
     // create partition of singleton sets for the vertices
-    partition = new UnionFindSets(V);
-
-    for(int z = 0; z < E; z++)
-    {
-    	ei = h.remove();
-
-    	uSet = edge[ei].u;
-    	vSet = edge[ei].v;
-    	int check1 = partition.findSet(uSet);
-    	int check2 = partition.findSet(vSet);
-
-    	if (check1 != check2)
-    	{
-    		
-    		mst[i++] = edge[ei];
-    		//System.out.println("\n Vertice 1 = "+ mst[z].u + " Vertice2 = " + mst[z].v + " Edge = "+mst[z].wgt);
-    		partition.union(uSet,vSet);
-    	}
-
-    	if (i == V-1) break;
-
-    }
+    
+    
     
     
     return mst;
@@ -272,24 +234,22 @@ public Edge[] MST_Kruskal()
     }
 
 } // end of Graph class
-
-//class Kruskal tree to demonstate the kruskal algorithm in the main function using the heap class, graph class and edge class
+    
+    // test code
 class KruskalTrees {
     public static void main(String[] args) throws IOException
     {
-        //String fname = "../wGraph3.txt";
-        Scanner mstPrim = new Scanner(System.in);
-        System.out.println("What is the name of the file ");
-        String fname = "../" + mstPrim.nextLine();
-        
+        String fname = "wGraph3.txt";
         //System.out.print("\nInput name of file with graph definition: ");
         //fname = Console.ReadLine();
 
         Graph g = new Graph(fname);
 
-        g.MST_Kruskal();
+        //g.MST_Kruskal();
 
-        g.showMST();
+        //g.showMST();
         
     }
-}  
+}    
+
+
