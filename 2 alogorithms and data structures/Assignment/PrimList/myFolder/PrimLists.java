@@ -1,6 +1,8 @@
 // Simple weighted graph representation 
 // Uses an Adjacency Linked Lists, suitable for sparse graphs
 
+package PrimList.myFolder;
+
 import java.io.*;
 import java.util.*;
 

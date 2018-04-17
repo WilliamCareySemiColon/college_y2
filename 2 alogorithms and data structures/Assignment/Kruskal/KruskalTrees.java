@@ -244,6 +244,8 @@ public Edge[] MST_Kruskal()
     		mst[i++] = edge[ei];
     		//System.out.println("\n Vertice 1 = "+ mst[z].u + " Vertice2 = " + mst[z].v + " Edge = "+mst[z].wgt);
     		partition.union(uSet,vSet);
+
+            System.out.println("Reading edge " + edge[ei].wgt + " connecting the vertices " + toChar(uSet) + " and " + toChar(vSet));
     	}
 
     	if (i == V-1) break;

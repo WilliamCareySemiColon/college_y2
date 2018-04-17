@@ -214,10 +214,12 @@ class Graph {
         dist[s] = 0;
         parent[s] = 0;
 
+        showConstruction(s, dist, parent);
+
         Heap pq =  new Heap(V, dist, hPos);
         pq.insert(s);
         
-        System.out.println("\nSource point is "+toChar(s));
+       // System.out.println("\nSource point is "+toChar(s));
 
         while ( !(pq.isEmpty()) ) 
         {
@@ -235,6 +237,8 @@ class Graph {
                         pq.insert(u.vert);
                     else
                         pq.siftUp(hPos[u.vert]);
+
+                    showConstruction(u.vert, dist, parent);
                 }
 
                 u = u.next;
@@ -250,6 +254,14 @@ class Graph {
 
         showMST();                   		
 	}
+
+    public void showConstruction(int s, int [] dist, int [] parent)
+    {
+        if ( toChar(parent[s]) > 64 && toChar(parent[s]) < 91)
+            System.out.println("\nCurrent Vertex is " + toChar(s) + " with parent value: " + toChar(parent[s]) + "  and the distance between the two vertices is " + dist[s]);
+        else
+            System.out.println("\nCurrent Vertex is " + toChar(s) + " with  itself as the Orgin point");
+    }
     
     public void showMST()
     {

@@ -1,6 +1,8 @@
 // Kruskal's Minimum Spanning Tree Algorithm
 // Union-find implemented using disjoint set trees without compression
 
+package Kruskal.myFolder;
+
 import java.io.*;
 import java.util.*;    
 
